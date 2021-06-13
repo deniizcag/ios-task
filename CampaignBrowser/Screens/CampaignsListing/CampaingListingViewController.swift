@@ -12,12 +12,19 @@ class CampaignListingViewController: UIViewController {
 
     private let imageService = ServiceLocator.instance.imageService
 
+  var layout: UICollectionViewFlowLayout = {
+      let layout = UICollectionViewFlowLayout()
+      let width = UIScreen.main.bounds.size.width
+    layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+      return layout
+  }()
+
     @IBOutlet
     private(set) weak var typedView: CampaignListingView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      typedView.collectionViewLayout = layout
         assert(typedView != nil)
     }
 
